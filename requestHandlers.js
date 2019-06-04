@@ -1,20 +1,19 @@
-
-function iniciar(){
+var exec = require('child_process').exec;
+function iniciar(response){
     
     
     console.log("manipulador de  'iniciar' ha sido llamado");
-    function sleep(miliSeconds){
-        // Obten la hora actual
-        var startTime = new Date().getTime();
-        // atasca la cpu
-        while (new Date().getTime < startTime + miliSeconds);
-    }
-    sleep(10000);
-    return "iniciar";
+    exec("ls -lah", function(error,stdout,stderr){
+        response.writeHead(200,{"Content-Type": "text/html"});
+        response.write(stdout);
+        response.end();
+    });
 }
-function subir(){
-    console.log("manipulador de  'subir' ha sido llamado");
-    
-}
+function subir(response) {
+    console.log("Manipulador de petición 'subir' fue llamado.");
+    response.writeHead(200, {"Content‐Type": "text/html"});
+    response.write("Hola Subir");
+    response.end();
+  }
 exports.iniciar = iniciar;
 exports.subir= subir;
