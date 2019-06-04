@@ -3,17 +3,15 @@ function iniciar(response){
     
     
     console.log("manipulador de  'iniciar' ha sido llamado");
-    exec("ls -lah", function(error,stdout,stderr){
+    var body = "<html> <form> <h2> test node </h2> <input type='text'/> <input type = 'submit' value='test'/></form> </html"
         response.writeHead(200,{"Content-Type": "text/html"});
-        response.write(stdout);
+        response.write(body);
         response.end();
-    });
+    
 }
-function subir(response) {
-    console.log("Manipulador de petición 'subir' fue llamado.");
-    response.writeHead(200, {"Content‐Type": "text/html"});
-    response.write("Hola Subir");
-    response.end();
-  }
+function subir(){
+    console.log("manipulador de  'subir' ha sido llamado");
+    
+}
 exports.iniciar = iniciar;
 exports.subir= subir;
